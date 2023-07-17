@@ -36,3 +36,14 @@ class User(AbstractUser):
     class Meta:
         verbose_name = 'User Account'
         
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, related_name='user', on_delete=models.CASCADE) 
+    image = models.ImageField(upload_to='profile_images/',default = 'def.jpg')
+    dob = models.DateTimeField(blank=True,null=True)
+
+    created = models.DateTimeField(auto_now_add=True) 
+
+    def __str__(self):
+        return f"{self.user.first_name}"

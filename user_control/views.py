@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from django.contrib import messages 
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate,login,logout
+
+
 # my model
 from .models import User
 # Create your views here.
@@ -70,8 +72,11 @@ def login_view(request):
         if user is not None:
             login(request,user)
             return redirect('home_view')
-
+        else:
+            messages.warning(request,'Authentication failed') 
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     return render(request,'frontend/login.html')
+
 
 def home_view(request):
 
