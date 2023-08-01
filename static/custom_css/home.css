@@ -1,0 +1,20 @@
+#banner{
+    background-image: url("/static/images/bs3.jpg"), linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))   ;
+    width: 100%;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    color: white;
+
+background-blend-mode: overlay;
+}
+
+#banner h1{
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#slider{
+    background: #fdfdfd; 
+}

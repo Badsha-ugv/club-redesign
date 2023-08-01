@@ -1,0 +1,11 @@
+#hero{
+    background-image: url("{% static'images/bg2.jpg' %}") 100% 0 no-repeat fixed;
+    
+        color: white;
+        height: 650px;
+        padding: 100px 0 0 0;
+}
+
+h4{
+    color: red;
+}

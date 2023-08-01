@@ -10,7 +10,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('auth/', include('user_control.urls')),
-    path('frontend/', include('frontend.urls')),
+    path('', include('frontend.urls')),
     path('backend/', include('backend.urls')),
 
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 

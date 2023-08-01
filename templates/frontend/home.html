@@ -1,11 +1,73 @@
 {% extends "base/base.html" %}
-
+{% load static %} 
 {% block title %}Home {% endblock %}
+
+{% block css %} 
+<link rel="stylesheet" href="{% static 'custom_css/home.css' %}">
+{% endblock %}
 
 {% block main %}
 
-<section>
-    <h3>home page</h3>
+<section id="banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 col-md-8 col-sm-12 mx-auto text-center hero-text">
+                <div class="text-center mt-5 position-relative" style="top: 40%;">
+
+                 <h1>  <b> Welcome to our website! </b> </h1> <h3> Join us on an exciting coding journey filled with  <hr> learning, creativity, and endless
+                    possibilities.</h3>  <b> Happy coding! </b>
+                </d>
+                <br> <br>
+               <a href="#" class="btn btn-outline-info btn-lg d-inline-block ">Go to Judge</a>
+                </div>
+        </div>
+    </div>
 </section>
 
+<section id="about" class="py-5">
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-6">
+                <h2>Our Goal</h2>
+                <p>
+                    We work to improve students' programming skills and motivate them towards programming. We provide them with a learning
+                    environment where they can learn and get help from others. Besides, we are organizing seminars with senior programmers
+                    to give them guidelines. Our main goal is to make everyone proficient in programming, remove the fear of programming
+                    from everyone and create competitive programmers.
+                </p>
+            </div>
+
+            <div class="col-6 ">
+                <img src="{% static 'images/about2.jpg' %}" class="img-fluid" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Slider Section  -->
+<section id="slider">
+    
+<div class="container">   
+<h3 class="text-center py-5">Slider Image</h3>
+
+    
+    <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+            {% for item in slider %}
+            <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %}">
+                <img src="{{item.image.url}}" class="d-block w-100" alt="...">
+            </div>
+            {% endfor %}
+            
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    </div>
+</section>
 {% endblock %}

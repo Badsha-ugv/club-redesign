@@ -59,7 +59,7 @@ def register_view(request):
         return redirect('login_view')
 
 
-    return render(request,'frontend/register.html')
+    return render(request,'user_control/register.html')
 
 
 def login_view(request):
@@ -75,9 +75,14 @@ def login_view(request):
         else:
             messages.warning(request,'Authentication failed') 
             return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-    return render(request,'frontend/login.html')
+    return render(request,'user_control/login.html')
 
 
-def home_view(request):
+# def home_view(request):
 
-    return render(request,'frontend/home.html')
+#     return render(request,'frontend/home.html')
+
+
+def user_profile_view(request,slug=None):
+
+    return render(request,'user_control/user_profile.html')

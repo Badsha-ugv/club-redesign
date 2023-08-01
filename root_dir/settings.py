@@ -42,6 +42,12 @@ INSTALLED_APPS = [
     'backend',
     'user_control',
 
+    
+    'ckeditor',
+    'ckeditor_uploader',
+
+
+
 ]
 
 MIDDLEWARE = [
@@ -126,11 +132,26 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR,'static'),
 )
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles') 
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media') 
 
 
+CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
+CKEDITOR_UPLOAD_PATH = 'content/ckeditor/'
+
+
+
+CKEDITOR_CONFIGS = {
+    "default": {
+        
+        "toolbar": "full",
+        "extraPlugins": ','.join(
+            ["codesnippet"] 
+        )
+    }
+}
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
