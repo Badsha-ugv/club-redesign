@@ -9,5 +9,8 @@ urlpatterns = [
     path('event/',views.blog_view,name='blog_view'),
     path('contest/',views.contest_view,name='contest_view'),
     path('rank/',views.rank_view,name='rank_view'),
+
+    path('create/',views.create_project,name='create_project'),
+    
     
 ]

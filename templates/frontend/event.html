@@ -8,10 +8,66 @@
 
 {% block main %} 
 
-<section>
+<section class="py-5">
     <div class="container">
-        Event
+
+        <div class="row">
+            <div class="col-12 col-md-7 col-sm-7 ">
+                {% for event in event_list %}
+                <div class="card card-body w-75 mx-auto mb-2 ">
+                    <div>
+
+                        <img src="{{event.image.url}}" class="img-fluid" alt="">
+                    </div>
+                    <div>
+                        <div class="d-flex justify-content-between ">
+
+                            <span>{{event.subtitle}}</span> <span class="bg-danger px-3 text-white rounded-5">{{event.event_staus}}</span>
+                        </div>
+                        <h3> <a href="" class="text-decoration-none text-info">{{event.title}}</a>
+                        </h3>
+                        <button type="button " class="btn btn-primary btn-sm float-end" data-bs-toggle="modal" data-bs-target="#staticBackdrop-{{forloop.counter}}">
+                        see more
+                        </button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col-10 mx-auto col-md-5 col-sm-5">
+                <iframe src="https://www.facebook.com/ugvbarisal" width="500" height="840"
+                    style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true"
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+            </div>
+        </div>
+        
     </div>
 </section>
+
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    
+</button> -->
+{% for event in event_list %}
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop-{{forloop.counter}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">{{event.title}}</h5>
+                <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+            </div>
+            <div class="modal-body">
+                {{event.desc|safe}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="bi bi-x-lg"></i></button>
+                <!-- <button type="button" class="btn btn-primary">Understood</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
 
 {% endblock %}

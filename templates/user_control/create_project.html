@@ -1,0 +1,27 @@
+{% extends 'base/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Create Projecr {% endblock %}
+
+{% block main %}
+
+<section class="py-5">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-10 mx-auto">
+                <div class="card card-body">
+
+                
+                    <form action="">
+                        {{form.media}}
+                        {{form|crispy}}
+                        <button>Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

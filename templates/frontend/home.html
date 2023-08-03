@@ -1,8 +1,8 @@
 {% extends "base/base.html" %}
-{% load static %} 
+{% load static %}
 {% block title %}Home {% endblock %}
 
-{% block css %} 
+{% block css %}
 <link rel="stylesheet" href="{% static 'custom_css/home.css' %}">
 {% endblock %}
 
@@ -12,62 +12,122 @@
     <div class="container">
         <div class="row">
             <div class="col-6 col-md-8 col-sm-12 mx-auto text-center hero-text">
-                <div class="text-center mt-5 position-relative" style="top: 40%;">
+                <div class="text-center  d-flex flex-column align-items-center justify-content-center mt-md-5 banner-inner-content">
 
-                 <h1>  <b> Welcome to our website! </b> </h1> <h3> Join us on an exciting coding journey filled with  <hr> learning, creativity, and endless
-                    possibilities.</h3>  <b> Happy coding! </b>
-                </d>
-                <br> <br>
-               <a href="#" class="btn btn-outline-info btn-lg d-inline-block ">Go to Judge</a>
+                    <h1> <b> Welcome to our website! </b> </h1>
+                    <h3 class="sm-p"> Join us on an exciting coding journey filled with
+                        learning, creativity, and endless
+                        possibilities.
+                    </h3> <b class="text-success h4"> Happy coding! </b>
+                    </d>
+                    <br>
+                    <a href="#" class="btn btn-outline-info btn-lg d-inline-block go-btn">Go to Judge</a>
                 </div>
+            </div>
         </div>
-    </div>
 </section>
 
 <section id="about" class="py-5">
     <div class="container">
         <div class="row d-flex align-items-center justify-content-center">
-            <div class="col-6">
-                <h2>Our Goal</h2>
-                <p>
-                    We work to improve students' programming skills and motivate them towards programming. We provide them with a learning
-                    environment where they can learn and get help from others. Besides, we are organizing seminars with senior programmers
-                    to give them guidelines. Our main goal is to make everyone proficient in programming, remove the fear of programming
+            <div class="col-12 col-md-6 col-sm-12 text-center about-inner ">
+                <h2 class="text-md-start">Our Goal</h2>
+                <p class="text-md-start">
+                    We work to improve students' programming skills and motivate them towards programming. We provide
+                    them with a learning
+                    environment where they can learn and get help from others. Besides, we are organizing seminars with
+                    senior programmers
+                    to give them guidelines. Our main goal is to make everyone proficient in programming, remove the
+                    fear of programming
                     from everyone and create competitive programmers.
                 </p>
             </div>
 
-            <div class="col-6 ">
+            <div class="col-12 col-md-6 col-sm-12">
                 <img src="{% static 'images/about2.jpg' %}" class="img-fluid" alt="">
             </div>
         </div>
     </div>
 </section>
 <!-- Slider Section  -->
-<section id="slider">
-    
-<div class="container">   
-<h3 class="text-center py-5">Slider Image</h3>
+<section id="slider" class="py-5">
 
-    
-    <div id="carouselExample" class="carousel slide">
-        <div class="carousel-inner">
-            {% for item in slider %}
-            <div class="carousel-item {% if forloop.counter == 1 %} active {% endif %}">
-                <img src="{{item.image.url}}" class="d-block w-100" alt="...">
+    <div class="container">
+        <h1 class="text-center py-5 fw-bolder">Our Achivement</h1>
+
+
+        <div id="carouselExample" class="carousel slide mb-5">
+            <div class="carousel-inner">
+                {% for item in slider %}
+                <div class="carousel-item carausal-size {% if forloop.counter == 1 %} active {% endif %}">
+                    <img src="{{item.image.url}}" class="d-block w-100" alt="...">
+                </div>
+                {% endfor %}
+
             </div>
-            {% endfor %}
-            
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
     </div>
+</section>
+
+<!-- Why join -->
+<section id="why-join" class="py-5">
+    <div class="container">
+
+        <h1 class="text-center fw-bolder py-5">Why You Join!</h1>
+        <div class="row">
+            <div class="col-12 col-md-4 accordion col-sm-12">
+                <div class="card ">
+                    <div class="card-img">
+                        <img src="{% static 'images/lab.jpg' %}" class="card-img-top img-fluid" alt="">
+                    </div>
+                    
+                    <div class="card-body border  shadow rounded-2 border-0">
+                        
+                        <h3 class="card-title">Dedicated Computer Lab </h3>
+                        
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae natus quisquam inventore, accusamus corporis placeat in id veniam magnam dicta numquam nam. Assumenda voluptatem totam adipisci necessitatibus accusamus? Minima, ipsum.
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 accordion col-sm-12">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="{% static 'images/solve.jpg' %}" class="card-img-top img-fluid" alt="">
+                    </div>
+                    
+                    <div class="card-body border rounded-2 border-0 shadow">
+                        
+                        <h3 class="card-title">Monthly Programming Contest </h3>
+                        
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae natus quisquam inventore, accusamus corporis placeat in id veniam magnam dicta numquam nam. Assumenda voluptatem totam adipisci necessitatibus accusamus? Minima, ipsum.
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 accordion col-sm-12">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="{% static 'images/teach.jpg' %}" class="card-img-top  img-fluid"  alt="" style="height: 335px;">
+                    </div>
+                    
+                    <div class="card-body border rounded-2 border-0 shadow">
+                        
+                        <h3 class="card-title">Weekly learning Session</h3>
+                        
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae natus quisquam inventore, accusamus corporis placeat in id veniam magnam dicta numquam nam. Assumenda voluptatem totam adipisci necessitatibus accusamus? Minima, ipsum.
+                    </div>
+                </div>
+            </div>
+        </div>
+    
     </div>
+
 </section>
 {% endblock %}

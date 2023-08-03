@@ -29,21 +29,21 @@ class Subcategory(models.Model):
     def __str__(self):
         return str(self.name) 
 
-class Project(models.Model):
-    # user
-    category = models.ForeignKey(Category,on_delete=models.CASCADE)
-    subcategory = models.ForeignKey(Subcategory,on_delete=models.CASCADE)
-    title = models.CharField(max_length=250)
-    description = RichTextField()
-    image = models.ImageField(upload_to= 'project_images/', blank=True, null=True) 
-    source = models.CharField(max_length=400,blank=True, null=True)
-    rating = models.CharField(max_length=1, choices=RATING, null=True, blank=True) 
+# class Project(models.Model):
+#     # user
+#     category = models.ForeignKey(Category,on_delete=models.CASCADE)
+#     subcategory = models.ForeignKey(Subcategory,on_delete=models.CASCADE)
+#     title = models.CharField(max_length=250)
+#     description = RichTextField()
+#     image = models.ImageField(upload_to= 'project_images/', blank=True, null=True) 
+#     source = models.CharField(max_length=400,blank=True, null=True)
+#     rating = models.CharField(max_length=1, choices=RATING, null=True, blank=True) 
 
-    created = models.DateTimeField(auto_now_add=True)
-    updated = models.DateTimeField(auto_now=True)
+#     created = models.DateTimeField(auto_now_add=True)
+#     updated = models.DateTimeField(auto_now=True)
 
-    def __str__(self):
-        return str(self.title) 
+#     def __str__(self):
+#         return str(self.title) 
     
 
 class Blog(models.Model):
@@ -68,6 +68,8 @@ class Project(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE,blank=True, null=True)
     title = models.CharField(max_length=400,blank=True, default="No Title")
     desc = RichTextField()
+    tag = models.CharField(max_length=100,blank=True, null=True, help_text='category or subcategory name')
+    thumb = models.ImageField(upload_to='project+thumb/',blank=True, null=True)
     source_code = models.CharField(max_length=220,blank=True) 
     video_url = models.CharField(max_length=220,blank=True) 
     resource_link = models.CharField(max_length=220,blank=True) 
@@ -85,9 +87,35 @@ class Project(models.Model):
     def __str__(self):
         return f"{self.title}"
 
+class ProjectGallery(models.Model):
+    project = models.ForeignKey(Project,on_delete=models.CASCADE)
+    image = models.FileField(blank=True) 
+
+    def __str__(self):
+        return f"{self.project.title}"
+    
 
 class SliderImage(models.Model):
     image  = models.ImageField(upload_to='slider_image/',blank=True, null=True) 
 
     def __str__(self):
         return f"{self.id}"
+
+
+EVENT_STATUS = (
+    ('UPCOMMING','UPCOMMING'),
+    ('RUNNING','RUNNING'),
+    ('EXPIRED','EXPIRED')
+)
+class Event(models.Model):
+    title = models.CharField(max_length=500)
+    subtitle = models.CharField(max_length=400,blank=True)
+    desc = RichTextField()
+    image = models.ImageField(upload_to='event/',default='def-event.jpg',blank=True) 
+
+    event_staus = models.CharField(max_length=20, choices=EVENT_STATUS,default='UPCOMMING')
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.title} on {self.date}" 
+    
